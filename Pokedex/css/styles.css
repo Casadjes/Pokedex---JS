@@ -171,6 +171,7 @@ body .pokedex .main .display .screen {
 body .pokedex .main .display .bottom {
   width: 100%;
   height: 20%;
+  display: flex;
 }
 body .pokedex .main .display .bottom .border {
   width: 20%;
@@ -178,10 +179,66 @@ body .pokedex .main .display .bottom .border {
   border-bottom: 36px solid #c90505;
   border-right: 42px solid transparent;
 }
+body .pokedex .main .display .bottom .bottom-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 40%;
+  height: 100%;
+}
+body .pokedex .main .display .bottom .bottom-button span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+}
+body .pokedex .main .display .bottom .bottom-sound {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 20px;
+  width: 40%;
+  height: 100%;
+}
+body .pokedex .main .display .bottom .bottom-sound span {
+  width: 35px;
+  height: 2px;
+  background-color: #999;
+}
 body .pokedex .main .controls {
   margin: 0 auto;
   width: 90%;
   height: 30%;
+  background-color: chocolate;
+}
+body .pokedex .main .controls .turnOn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 62%;
+  height: 40%;
+  gap: 10px;
+  background-color: aquamarine;
+}
+body .pokedex .main .controls .turnOn .on {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #333;
+}
+body .pokedex .main .controls .turnOn .decoration-red {
+  width: 35px;
+  height: 10px;
+  border-radius: 12px;
+  background-color: darkred;
+}
+body .pokedex .main .controls .turnOn .decoration-blue {
+  width: 35px;
+  height: 10px;
+  border-radius: 12px;
+  background-color: skyblue;
 }
 body .pokedex .pokedex-inside-right {
   position: absolute;

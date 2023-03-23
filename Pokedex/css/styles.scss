@@ -168,11 +168,41 @@ body {
 				.bottom {
 					width: 100%;
 					height: 20%;
+					display: flex;
 					.border {
 						width: 20%;
 						height: 100%;
 						border-bottom: 36px solid #c90505;
 						border-right: 42px solid transparent;
+					}
+					.bottom-button {
+						display: flex;
+						align-items: center;
+						justify-content: flex-start;
+						width: 40%;
+						height: 100%;
+
+						span {
+							width: 20px;
+							height: 20px;
+							border-radius: 50%;
+							background-color: red;
+						}
+					}
+					.bottom-sound {
+						display: flex;
+						flex-direction: column;
+						gap: 3px;
+						align-items: flex-end;
+						justify-content: center;
+						padding-right: 20px;
+						width: 40%;
+						height: 100%;
+						span {
+							width: 35px;
+							height: 2px;
+							background-color: #999;
+						}
 					}
 				}
 			}
@@ -180,7 +210,34 @@ body {
 				margin: 0 auto;
 				width: 90%;
 				height: 30%;
-				// background-color: aqua;
+				background-color: chocolate;
+				.turnOn {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					width: 62%;
+					height: 40%;
+					gap: 10px;
+					background-color: aquamarine;
+					.on {
+						width: 32px;
+						height: 32px;
+						border-radius: 50%;
+						background-color: #333;
+					}
+					.decoration-red {
+						width: 35px;
+						height: 10px;
+						border-radius: 12px;
+						background-color: darkred;
+					}
+					.decoration-blue {
+						width: 35px;
+						height: 10px;
+						border-radius: 12px;
+						background-color: skyblue;
+					}
+				}
 			}
 		}
 		/* 
