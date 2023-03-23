@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,11 +6,29 @@
 }
 
 body {
+  font-family: "Share Tech Mono", sans-serif;
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+body .welcome {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  opacity: 0.5;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .welcome::before {
+  content: "";
+  width: 350px;
+  height: 400px;
+  background-color: white;
 }
 body .pokedex {
   position: relative;
@@ -195,6 +214,9 @@ body .pokedex .main .display .screen {
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(14, 174, 87) 0%, rgb(12, 116, 117) 90%);
   box-shadow: inset 0px 0px 10px black;
 }
+body .pokedex .main .display .screen.active {
+  background-image: linear-gradient(0deg, rgb(24, 138, 141) 11.2%, rgb(96, 221, 142) 91.1%);
+}
 body .pokedex .main .display .bottom {
   width: 100%;
   height: 20%;
@@ -270,12 +292,16 @@ body .pokedex .main .controls .turnOn .on {
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  color: #999;
+  color: red;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: #333;
+  cursor: pointer;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8), inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+body .pokedex .main .controls .turnOn .on.active {
+  color: greenyellow;
 }
 body .pokedex .main .controls .turnOn .decoration-red {
   width: 35px;
@@ -311,6 +337,9 @@ body .pokedex .main .controls .mini-display .mini-screen {
   border-radius: 5px;
   box-shadow: inset 0px 0px 3px black;
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(14, 174, 87) 0%, rgb(12, 116, 117) 90%);
+}
+body .pokedex .main .controls .mini-display .mini-screen.active {
+  background-image: linear-gradient(0deg, rgb(24, 138, 141) 11.2%, #60dd8e 91.1%);
 }
 body .pokedex .main .controls .arrows {
   grid-area: 1/2/3/3;
@@ -426,6 +455,8 @@ body .pokedex .pokedex-inside-right .info-display {
   align-items: flex-end;
 }
 body .pokedex .pokedex-inside-right .info-display .info-screen {
+  padding: 10px;
+  font-size: 12px;
   transform: rotateY(180deg);
   width: 100%;
   height: 100%;
@@ -433,6 +464,9 @@ body .pokedex .pokedex-inside-right .info-display .info-screen {
   box-shadow: inset 0px 0px 10px black;
   border-radius: 6px;
   grid-area: 1/1/2/5;
+}
+body .pokedex .pokedex-inside-right .info-display .info-screen.active {
+  background-image: linear-gradient(0deg, rgb(24, 138, 141) 11.2%, rgb(96, 221, 142) 91.1%);
 }
 body .pokedex .pokedex-inside-right .info-display .blue-box1,
 body .pokedex .pokedex-inside-right .info-display .blue-box2,
@@ -484,6 +518,7 @@ body .pokedex .pokedex-inside-right .search .play-stop-buttons .buttons {
   gap: 5px;
 }
 body .pokedex .pokedex-inside-right .search .play-stop-buttons .buttons span {
+  box-shadow: 2px -4px 2px rgba(0, 0, 0, 0.2);
   width: 30px;
   height: 20px;
   background-color: #eee;
@@ -495,8 +530,9 @@ body .pokedex .pokedex-inside-right .search .play-stop-buttons .buttons span {
 }
 body .pokedex .pokedex-inside-right .search .play-stop-buttons .led {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
+  margin-left: 5px;
   background-color: yellow;
   border-radius: 50%;
   border: 1px solid #666;
@@ -515,14 +551,50 @@ body .pokedex .pokedex-inside-right .search .play-stop-buttons .led::after {
   border-radius: 50%;
 }
 body .pokedex .pokedex-inside-right .search .form {
-  background-color: darkkhaki;
   width: 100%;
   height: 40%;
   display: flex;
+  flex-direction: column;
   transform: rotateY(180deg);
   font-size: 12px;
+  gap: 2px;
 }
-body .pokedex .pokedex-inside-right .search .form input {
-  width: 80%;
-  height: 40%;
+body .pokedex .pokedex-inside-right .search .form div {
+  width: 100%;
+  height: 50%;
+}
+body .pokedex .pokedex-inside-right .search .form .form-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+body .pokedex .pokedex-inside-right .search .form .form-top label {
+  color: yellow;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
+}
+body .pokedex .pokedex-inside-right .search .form .form-top input {
+  border-radius: 5px;
+  border: 3px double #666;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: #333;
+  color: white;
+  width: 60%;
+  height: 20px;
+}
+body .pokedex .pokedex-inside-right .search .form .form-bottom {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .pokedex .pokedex-inside-right .search .form .form-bottom button {
+  font-family: "Share Tech Mono";
+  display: flex;
+  align-items: center;
+  height: 75%;
+  width: auto;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 5px 12px;
 }/*# sourceMappingURL=styles.css.map */

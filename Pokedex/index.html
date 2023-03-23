@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="css/styles.css" />
 	</head>
 	<body>
+		<div class="welcome"><div class="modal"></div></div>
 		<div class="pokedex">
 			<div class="pokedex-top-left">
 				<div class="box-left">
@@ -33,7 +34,7 @@
 						<span></span>
 						<span></span>
 					</div>
-					<div class="screen"></div>
+					<div class="screen" id="screen"></div>
 					<div class="bottom">
 						<div class="border"></div>
 						<div class="bottom-button">
@@ -50,14 +51,14 @@
 				</div>
 				<div class="controls">
 					<div class="turnOn">
-						<span class="on"><ion-icon name="power"></ion-icon></span>
+						<span class="on" id="on"><ion-icon name="power"></ion-icon></span>
 						<span class="decoration-red"></span>
 						<span class="decoration-blue"></span>
 					</div>
 					<div class="mini-display">
 						<span></span>
 						<span></span>
-						<div class="mini-screen"></div>
+						<div class="mini-screen" id="mini-display"></div>
 					</div>
 					<div class="arrows">
 						<span class="arrow-top"></span>
@@ -77,7 +78,7 @@
 					</div>
 				</div>
 				<div class="info-display">
-					<div class="info-screen">
+					<div class="info-screen" id="info-screen">
 						<p>Charizard es un pokemon</p>
 					</div>
 					<span class="blue-box1"></span>
@@ -98,9 +99,14 @@
 						</div>
 					</div>
 					<form class="form">
-						<label for="search-pokemon">POKÉMON</label>
-						<input type="text" id="search-pokemon" />
-						<button type="submit">SEARCH</button>
+						<div class="form-top">
+							<label for="search-pokemon">POKÉMON</label>
+							<input
+								type="text"
+								id="search-pokemon"
+								placeholder="  Charizard" />
+						</div>
+						<div class="form-bottom"><button type="submit">SEARCH</button></div>
 					</form>
 				</div>
 			</div>

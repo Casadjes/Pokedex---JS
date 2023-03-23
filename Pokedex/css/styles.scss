@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 * {
 	margin: 0;
 	padding: 0;
@@ -5,12 +6,29 @@
 }
 
 body {
+	font-family: "Share Tech Mono", sans-serif;
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	// padding-left: 430px;
+	.welcome {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		background-color: #333;
+		opacity: 0.5;
+		z-index: 5;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&::before {
+			content: "";
+			width: 350px;
+			height: 400px;
+			background-color: white;
+		}
+	}
 	.pokedex {
 		position: relative;
 		width: 250px;
@@ -191,6 +209,13 @@ body {
 						rgba(12, 116, 117, 1) 90%
 					);
 					box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
+					&.active {
+						background-image: linear-gradient(
+							0deg,
+							rgba(24, 138, 141, 1) 11.2%,
+							rgba(96, 221, 142, 1) 91.1%
+						);
+					}
 				}
 				.bottom {
 					width: 100%;
@@ -268,13 +293,17 @@ body {
 						align-items: center;
 						justify-content: center;
 						font-size: 22px;
-						color: #999;
+						color: red;
 						width: 32px;
 						height: 32px;
 						border-radius: 50%;
 						background-color: #333;
+						cursor: pointer;
 						box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.8),
 							inset 0px 0px 10px rgba($color: #000000, $alpha: 0.4);
+						&.active {
+							color: greenyellow;
+						}
 					}
 					.decoration-red {
 						width: 35px;
@@ -316,7 +345,13 @@ body {
 							rgba(14, 174, 87, 1) 0%,
 							rgba(12, 116, 117, 1) 90%
 						);
-						// box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
+						&.active {
+							background-image: linear-gradient(
+								0deg,
+								rgba(24, 138, 141, 1) 11.2%,
+								#60dd8e 91.1%
+							);
+						}
 					}
 				}
 				.arrows {
@@ -444,6 +479,8 @@ body {
 				justify-items: center;
 				align-items: flex-end;
 				.info-screen {
+					padding: 10px;
+					font-size: 12px;
 					transform: rotateY(180deg);
 					width: 100%;
 					height: 100%;
@@ -455,6 +492,13 @@ body {
 					box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
 					border-radius: 6px;
 					grid-area: 1 / 1 / 2 / 5;
+					&.active {
+						background-image: linear-gradient(
+							0deg,
+							rgba(24, 138, 141, 1) 11.2%,
+							rgba(96, 221, 142, 1) 91.1%
+						);
+					}
 				}
 				.blue-box1,
 				.blue-box2,
@@ -508,6 +552,7 @@ body {
 						justify-content: flex-end;
 						gap: 5px;
 						span {
+							box-shadow: 2px -4px 2px rgba($color: #000000, $alpha: 0.2);
 							width: 30px;
 							height: 20px;
 							background-color: #eee;
@@ -520,8 +565,9 @@ body {
 					}
 					.led {
 						position: relative;
-						width: 30px;
-						height: 30px;
+						width: 25px;
+						height: 25px;
+						margin-left: 5px;
 						background-color: yellow;
 						border-radius: 50%;
 						border: 1px solid #666;
@@ -541,16 +587,52 @@ body {
 					}
 				}
 				.form {
-					background-color: darkkhaki;
 					width: 100%;
 					height: 40%;
 					display: flex;
-
+					flex-direction: column;
 					transform: rotateY(180deg);
 					font-size: 12px;
-					input {
-						width: 80%;
-						height: 40%;
+					gap: 2px;
+					div {
+						width: 100%;
+						height: 50%;
+						// background-color: blueviolet;
+					}
+					.form-top {
+						display: flex;
+						justify-content: space-around;
+						align-items: center;
+						label {
+							color: yellow;
+							text-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.6);
+						}
+						input {
+							border-radius: 5px;
+							border: 3px double #666;
+							box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2);
+							background-color: #333;
+							color: white;
+							width: 60%;
+							height: 20px;
+						}
+					}
+					.form-bottom {
+						width: 100%;
+						height: 100%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						button {
+							font-family: "Share Tech Mono";
+							display: flex;
+							align-items: center;
+							height: 75%;
+							width: auto;
+							border-radius: 5px;
+							font-size: 12px;
+							padding: 5px 12px;
+						}
 					}
 				}
 			}
