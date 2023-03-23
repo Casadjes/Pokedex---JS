@@ -24,11 +24,60 @@ body .welcome {
   justify-content: center;
   align-items: center;
 }
-body .welcome::before {
-  content: "";
-  width: 350px;
-  height: 400px;
+body .welcome.out {
+  display: none;
+}
+body .modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 350px;
+  border-radius: 5px;
   background-color: white;
+  margin: auto;
+  padding: 0 10px;
+  z-index: 6;
+}
+body .modal img {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 20px;
+}
+body .modal p {
+  text-align: justify;
+  margin-top: 10px;
+}
+body .modal h2 {
+  color: red;
+  margin-top: 10px;
+  font-size: 20px;
+}
+body .modal ul li {
+  list-style-type: none;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+body .modal button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px auto;
+  border-radius: 20px;
+  text-align: center;
+  padding: 10px 20px;
+  background-color: #c90505;
+  color: white;
+  font-size: 15px;
+  font-family: "Share Tech Mono";
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+body .modal button:hover {
+  background-color: red;
+}
+body .modal.out {
+  display: none;
 }
 body .pokedex {
   position: relative;

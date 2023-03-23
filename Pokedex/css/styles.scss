@@ -22,11 +22,62 @@ body {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		&::before {
-			content: "";
-			width: 350px;
-			height: 400px;
-			background-color: white;
+		&.out {
+			display: none;
+		}
+	}
+	.modal {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		width: 400px;
+		height: 350px;
+		border-radius: 5px;
+		background-color: white;
+		margin: auto;
+		padding: 0 10px;
+		z-index: 6;
+		img {
+			margin-top: 10px;
+			width: 100%;
+			border-radius: 20px;
+		}
+		p {
+			text-align: justify;
+			margin-top: 10px;
+		}
+		h2 {
+			color: red;
+			margin-top: 10px;
+			font-size: 20px;
+		}
+		ul {
+			li {
+				list-style-type: none;
+				margin-top: 10px;
+				margin-left: 20px;
+			}
+		}
+		button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 5px auto;
+			border-radius: 20px;
+			text-align: center;
+			padding: 10px 20px;
+			background-color: #c90505;
+			color: white;
+			font-size: 15px;
+			font-family: "Share Tech Mono";
+			cursor: pointer;
+			transition: background-color 0.3s;
+			&:hover {
+				background-color: red;
+			}
+		}
+		&.out {
+			display: none;
 		}
 	}
 	.pokedex {
