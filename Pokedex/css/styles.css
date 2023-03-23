@@ -167,6 +167,7 @@ body .pokedex .main .display .screen {
   height: 70%;
   border-radius: 8px;
   background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(14, 174, 87) 0%, rgb(12, 116, 117) 90%);
+  box-shadow: inset 0px 0px 10px black;
 }
 body .pokedex .main .display .bottom {
   width: 100%;
@@ -191,6 +192,7 @@ body .pokedex .main .display .bottom .bottom-button span {
   height: 20px;
   border-radius: 50%;
   background-color: red;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 body .pokedex .main .display .bottom .bottom-sound {
   display: flex;
@@ -208,37 +210,125 @@ body .pokedex .main .display .bottom .bottom-sound span {
   background-color: #999;
 }
 body .pokedex .main .controls {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 40% 1fr;
   margin: 0 auto;
   width: 90%;
   height: 30%;
-  background-color: chocolate;
 }
 body .pokedex .main .controls .turnOn {
+  grid-area: 1/1/2/2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 62%;
-  height: 40%;
+  width: 100%;
+  height: 100%;
   gap: 10px;
-  background-color: aquamarine;
 }
 body .pokedex .main .controls .turnOn .on {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #999;
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background-color: #333;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8), inset 0px 0px 10px rgba(0, 0, 0, 0.4);
 }
 body .pokedex .main .controls .turnOn .decoration-red {
   width: 35px;
   height: 10px;
   border-radius: 12px;
   background-color: darkred;
+  box-shadow: inset 0px 0px 3px black;
 }
 body .pokedex .main .controls .turnOn .decoration-blue {
   width: 35px;
   height: 10px;
   border-radius: 12px;
   background-color: skyblue;
+  box-shadow: inset 0px 0px 3px black;
+}
+body .pokedex .main .controls .mini-display {
+  display: flex;
+  grid-area: 2/1/3/2;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  padding-top: 10px;
+}
+body .pokedex .main .controls .mini-display span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #000;
+}
+body .pokedex .main .controls .mini-display .mini-screen {
+  width: 60%;
+  height: 70%;
+  border-radius: 5px;
+  background-color: green;
+  box-shadow: inset 0px 0px 3px black;
+}
+body .pokedex .main .controls .arrows {
+  grid-area: 1/2/3/3;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+}
+body .pokedex .main .controls .arrows span {
+  height: 60%;
+  width: 60%;
+  background-color: #333;
+}
+body .pokedex .main .controls .arrows .arrow-top {
+  border-radius: 3px 3px 0 0;
+  justify-self: center;
+  align-self: flex-end;
+  grid-area: 1/2/2/3;
+  box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.8);
+}
+body .pokedex .main .controls .arrows .arrow-left {
+  border-radius: 3px 0 0 3px;
+  justify-self: right;
+  grid-area: 2/1/3/2;
+  box-shadow: -1px 0px 3px rgba(0, 0, 0, 0.8);
+}
+body .pokedex .main .controls .arrows .arrow-right {
+  border-radius: 0 3px 3px 0;
+  justify-self: left;
+  grid-area: 2/3/3/4;
+  box-shadow: 0px -1px 3px rgba(0, 0, 0, 0.8);
+}
+body .pokedex .main .controls .arrows .arrow-center {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  justify-self: center;
+  grid-area: 2/2/3/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .pokedex .main .controls .arrows .arrow-center span {
+  width: 7px;
+  height: 7px;
+  background-color: #222;
+  border-radius: 50%;
+}
+body .pokedex .main .controls .arrows .arrow-bottom {
+  border-radius: 0 0 3px 3px;
+  justify-self: center;
+  align-self: flex-start;
+  grid-area: 3/2/4/3;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.8);
 }
 body .pokedex .pokedex-inside-right {
   position: absolute;
