@@ -20,7 +20,7 @@ body {
 		border-radius: 20px 0 0 20px;
 		display: grid;
 		grid-template-columns: 1fr 10%;
-		grid-template-rows: 20% 1fr 20%;
+		grid-template-rows: 20% 1fr 10%;
 		.pokedex-top-left {
 			display: flex;
 			grid-area: 1 / 1 / 2 / 2;
@@ -36,11 +36,13 @@ body {
 					align-items: center;
 					width: 50%;
 					height: 100%;
-					background-color: greenyellow;
+
 					&::before {
 						content: "";
-						width: 45px;
-						height: 45px;
+						box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.2),
+							inset 0px 0px 10px rgba($color: #000000, $alpha: 0.4);
+						width: 40px;
+						height: 40px;
 						border-radius: 50%;
 						border: 2px solid white;
 						background-color: skyblue;
@@ -49,7 +51,30 @@ body {
 				.three-circles {
 					width: 50%;
 					height: 100%;
-					background-color: blue;
+					display: flex;
+					justify-content: space-between;
+					padding-top: 10px;
+					.red-circle {
+						border-radius: 50%;
+						height: 15px;
+						width: 15px;
+						background-color: darkred;
+						box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 2);
+					}
+					.yellow-circle {
+						border-radius: 50%;
+						height: 15px;
+						width: 15px;
+						background-color: yellow;
+						box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 2);
+					}
+					.green-circle {
+						border-radius: 50%;
+						height: 15px;
+						width: 15px;
+						background-color: green;
+						box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 2);
+					}
 				}
 			}
 			.box-right {
@@ -74,20 +99,89 @@ body {
 		}
 		.center-top {
 			grid-area: 1 / 2 / 2 / 3;
-			background-color: darkblue;
+			background-color: red;
+			padding-top: 30px;
+			z-index: 3;
+			div {
+				height: 100%;
+				width: 100%;
+				border-bottom: 2px solid whitesmoke;
+				background-color: red;
+				box-shadow: 0px 0px 20px rgba($color: #000000, $alpha: 0.5),
+					inset 2px 0px 20px rgba($color: #000000, $alpha: 0.3);
+			}
 		}
 		.center {
 			grid-area: 2 / 2 / 3 / 3;
-			background-color: darkblue;
+			background-color: red;
+			border-bottom: 2px solid whitesmoke;
+			box-shadow: 0px 0px 20px rgba($color: #000000, $alpha: 0.5),
+				inset 2px 0px 20px rgba($color: #000000, $alpha: 0.3);
+			z-index: 3;
 		}
 		.center-bottom {
 			grid-area: 3 / 2 / 4 / 3;
-			background-color: darkblue;
+			background-color: red;
+			box-shadow: 0px 0px 20px rgba($color: #000000, $alpha: 0.5),
+				inset 2px 0px 20px rgba($color: #000000, $alpha: 0.3);
+			z-index: 3;
 		}
 		.main {
 			grid-area: 2 / 1 / 4 / 2;
 			border-bottom-left-radius: 20px;
 			background-color: #c90505;
+			.display {
+				margin: 0 auto;
+				margin-top: 10px;
+				width: 90%;
+				height: 66%;
+				border-radius: 8px 8px 8px 0px;
+				background-color: #eee;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				.top {
+					height: 10%;
+					width: 100%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					gap: 10px;
+					span {
+						height: 13px;
+						width: 13px;
+						border-radius: 50%;
+						background-color: red;
+					}
+				}
+				.screen {
+					width: 85%;
+					height: 70%;
+					border-radius: 8px;
+					background-image: radial-gradient(
+						circle farthest-corner at 10% 20%,
+						rgba(14, 174, 87, 1) 0%,
+						rgba(12, 116, 117, 1) 90%
+					);
+				}
+				.bottom {
+					width: 100%;
+					height: 20%;
+					.border {
+						width: 20%;
+						height: 100%;
+						border-bottom: 36px solid #c90505;
+						border-right: 42px solid transparent;
+					}
+				}
+			}
+			.controls {
+				margin: 0 auto;
+				width: 90%;
+				height: 30%;
+				// background-color: aqua;
+			}
 		}
 		/* 
     
@@ -106,7 +200,8 @@ body {
 			border-radius: 0 0 0 20px;
 			background-color: red;
 			transform-origin: right;
-			transition: all 0.5s;
+			transition: transform 1s;
+			z-index: 2;
 			&.active {
 				transform: rotateY(180deg);
 			}
@@ -141,8 +236,8 @@ body {
 				}
 			}
 		}
-		&:hover .pokedex-inside-right {
-			transform: rotateY(180deg);
-		}
+		// &:hover .pokedex-inside-right {
+		// 	transform: rotateY(180deg);
+		// }
 	}
 }

@@ -20,7 +20,7 @@ body .pokedex {
   border-radius: 20px 0 0 20px;
   display: grid;
   grid-template-columns: 1fr 10%;
-  grid-template-rows: 20% 1fr 20%;
+  grid-template-rows: 20% 1fr 10%;
   /* 
 
 
@@ -48,12 +48,12 @@ body .pokedex .pokedex-top-left .box-left .circle {
   align-items: center;
   width: 50%;
   height: 100%;
-  background-color: greenyellow;
 }
 body .pokedex .pokedex-top-left .box-left .circle::before {
   content: "";
-  width: 45px;
-  height: 45px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2), inset 0px 0px 10px rgba(0, 0, 0, 0.4);
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid white;
   background-color: skyblue;
@@ -61,7 +61,30 @@ body .pokedex .pokedex-top-left .box-left .circle::before {
 body .pokedex .pokedex-top-left .box-left .three-circles {
   width: 50%;
   height: 100%;
-  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+body .pokedex .pokedex-top-left .box-left .three-circles .red-circle {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: darkred;
+  box-shadow: inset 0px 0px 3px black;
+}
+body .pokedex .pokedex-top-left .box-left .three-circles .yellow-circle {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: yellow;
+  box-shadow: inset 0px 0px 3px black;
+}
+body .pokedex .pokedex-top-left .box-left .three-circles .green-circle {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  background-color: green;
+  box-shadow: inset 0px 0px 3px black;
 }
 body .pokedex .pokedex-top-left .box-right {
   width: 50%;
@@ -84,20 +107,81 @@ body .pokedex .pokedex-top-left .box-right .right {
 }
 body .pokedex .center-top {
   grid-area: 1/2/2/3;
-  background-color: darkblue;
+  background-color: red;
+  padding-top: 30px;
+  z-index: 3;
+}
+body .pokedex .center-top div {
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid whitesmoke;
+  background-color: red;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), inset 2px 0px 20px rgba(0, 0, 0, 0.3);
 }
 body .pokedex .center {
   grid-area: 2/2/3/3;
-  background-color: darkblue;
+  background-color: red;
+  border-bottom: 2px solid whitesmoke;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), inset 2px 0px 20px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 }
 body .pokedex .center-bottom {
   grid-area: 3/2/4/3;
-  background-color: darkblue;
+  background-color: red;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5), inset 2px 0px 20px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 }
 body .pokedex .main {
   grid-area: 2/1/4/2;
   border-bottom-left-radius: 20px;
   background-color: #c90505;
+}
+body .pokedex .main .display {
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 90%;
+  height: 66%;
+  border-radius: 8px 8px 8px 0px;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body .pokedex .main .display .top {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+body .pokedex .main .display .top span {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  background-color: red;
+}
+body .pokedex .main .display .screen {
+  width: 85%;
+  height: 70%;
+  border-radius: 8px;
+  background-image: radial-gradient(circle farthest-corner at 10% 20%, rgb(14, 174, 87) 0%, rgb(12, 116, 117) 90%);
+}
+body .pokedex .main .display .bottom {
+  width: 100%;
+  height: 20%;
+}
+body .pokedex .main .display .bottom .border {
+  width: 20%;
+  height: 100%;
+  border-bottom: 36px solid #c90505;
+  border-right: 42px solid transparent;
+}
+body .pokedex .main .controls {
+  margin: 0 auto;
+  width: 90%;
+  height: 30%;
 }
 body .pokedex .pokedex-inside-right {
   position: absolute;
@@ -107,7 +191,8 @@ body .pokedex .pokedex-inside-right {
   border-radius: 0 0 0 20px;
   background-color: red;
   transform-origin: right;
-  transition: all 0.5s;
+  transition: transform 1s;
+  z-index: 2;
 }
 body .pokedex .pokedex-inside-right.active {
   transform: rotateY(180deg);
@@ -140,7 +225,4 @@ body .pokedex .pokedex-inside-right .pokedex-top .box-right .right {
   width: 50%;
   height: 40px;
   background-color: red;
-}
-body .pokedex:hover .pokedex-inside-right {
-  transform: rotateY(180deg);
 }/*# sourceMappingURL=styles.css.map */
