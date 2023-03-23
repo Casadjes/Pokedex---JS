@@ -44,8 +44,20 @@ body {
 						width: 40px;
 						height: 40px;
 						border-radius: 50%;
-						border: 2px solid white;
+						border: 3px solid white;
 						background-color: skyblue;
+					}
+					&::after {
+						content: "";
+						position: absolute;
+						top: 20px;
+						left: 17px;
+						width: 8px;
+						height: 12px;
+						opacity: 0.8;
+						transform: rotate(45deg);
+						background-color: white;
+						border-radius: 50%;
 					}
 				}
 				.three-circles {
@@ -149,10 +161,24 @@ body {
 					justify-content: center;
 					gap: 10px;
 					span {
+						position: relative;
 						height: 13px;
 						width: 13px;
 						border-radius: 50%;
 						background-color: red;
+						box-shadow: inset 0px 0px 5px rgba($color: #000000, $alpha: 0.5);
+						&::after {
+							content: "";
+							position: absolute;
+							top: 3px;
+							left: 3px;
+							width: 3px;
+							height: 4px;
+							opacity: 0.8;
+							transform: rotate(45deg);
+							background-color: white;
+							border-radius: 50%;
+						}
 					}
 				}
 				.screen {
@@ -184,11 +210,24 @@ body {
 						height: 100%;
 
 						span {
+							position: relative;
 							width: 20px;
 							height: 20px;
 							border-radius: 50%;
 							background-color: red;
-							box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 0.3);
+							box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 0.5);
+							&::after {
+								content: "";
+								position: absolute;
+								top: 3px;
+								left: 4px;
+								width: 5px;
+								height: 7px;
+								opacity: 0.8;
+								transform: rotate(45deg);
+								background-color: white;
+								border-radius: 50%;
+							}
 						}
 					}
 					.bottom-sound {
@@ -270,8 +309,14 @@ body {
 						width: 60%;
 						height: 70%;
 						border-radius: 5px;
-						background-color: green;
+						// background-color: green;
 						box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 2);
+						background-image: radial-gradient(
+							circle farthest-corner at 10% 20%,
+							rgba(14, 174, 87, 1) 0%,
+							rgba(12, 116, 117, 1) 90%
+						);
+						// box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
 					}
 				}
 				.arrows {
@@ -344,6 +389,9 @@ body {
     
     */
 		.pokedex-inside-right {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
 			position: absolute;
 			width: 100%;
 			height: 80%;
@@ -383,6 +431,126 @@ body {
 						width: 50%;
 						height: 40px;
 						background-color: red;
+					}
+				}
+			}
+			.info-display {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				grid-template-rows: 80% 1fr;
+				margin-top: 20px;
+				width: 80%;
+				height: 50%;
+				justify-items: center;
+				align-items: flex-end;
+				.info-screen {
+					transform: rotateY(180deg);
+					width: 100%;
+					height: 100%;
+					background-image: radial-gradient(
+						circle farthest-corner at 10% 20%,
+						rgba(14, 174, 87, 1) 0%,
+						rgba(12, 116, 117, 1) 90%
+					);
+					box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
+					border-radius: 6px;
+					grid-area: 1 / 1 / 2 / 5;
+				}
+				.blue-box1,
+				.blue-box2,
+				.blue-box3,
+				.blue-box4 {
+					width: 90%;
+					height: 90%;
+					background-color: lightblue;
+					box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 1);
+				}
+				.blue-box4 {
+					border-radius: 0px 4px 4px 0px;
+				}
+				.blue-box1 {
+					border-radius: 4px 0px 0px 4px;
+				}
+			}
+			.search {
+				width: 80%;
+				height: 50%;
+
+				.top-decoration {
+					display: flex;
+					align-items: center;
+					padding-left: 3px;
+					gap: 10px;
+					width: 100%;
+					height: 20%;
+
+					span {
+						width: 35px;
+						height: 10px;
+						border-radius: 12px;
+						background-color: #333;
+						box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 2);
+					}
+				}
+				.play-stop-buttons {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					height: 35%;
+
+					.buttons {
+						width: 50%;
+						height: 100%;
+
+						display: flex;
+						align-items: center;
+						justify-content: flex-end;
+						gap: 5px;
+						span {
+							width: 30px;
+							height: 20px;
+							background-color: #eee;
+							border-radius: 3px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							transform: rotate(180deg);
+						}
+					}
+					.led {
+						position: relative;
+						width: 30px;
+						height: 30px;
+						background-color: yellow;
+						border-radius: 50%;
+						border: 1px solid #666;
+						box-shadow: inset 0px 0px 5px rgba($color: #000000, $alpha: 0.8);
+						&::after {
+							content: "";
+							position: absolute;
+							top: 5px;
+							right: 5px;
+							width: 6px;
+							height: 8px;
+							opacity: 1;
+							transform: rotate(-45deg);
+							background-color: white;
+							border-radius: 50%;
+						}
+					}
+				}
+				.form {
+					background-color: darkkhaki;
+					width: 100%;
+					height: 40%;
+					display: flex;
+
+					transform: rotateY(180deg);
+					font-size: 12px;
+					input {
+						width: 80%;
+						height: 40%;
 					}
 				}
 			}
