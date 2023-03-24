@@ -6,6 +6,10 @@
 }
 
 body {
+	background-image: url(../img/pikachuFondo.jpg);
+	background-position: bottom;
+	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: "Share Tech Mono", sans-serif;
 	width: 100%;
 	height: 100vh;
@@ -16,8 +20,8 @@ body {
 		position: fixed;
 		width: 100%;
 		height: 100%;
-		background-color: #333;
-		opacity: 0.5;
+		background-color: #000;
+		opacity: 0.6;
 		z-index: 5;
 		display: flex;
 		justify-content: center;
@@ -27,60 +31,71 @@ body {
 		}
 	}
 	.modal {
+		background-image: url(../img/pokemon-modal.jpg);
+		background-position: bottom;
 		position: fixed;
 		display: flex;
 		flex-direction: column;
 		width: 400px;
 		height: 350px;
 		border-radius: 5px;
+		border: 3px solid #eee;
 		background-color: white;
 		margin: auto;
 		padding: 0 10px;
 		z-index: 6;
-		img {
-			margin-top: 10px;
-			width: 100%;
-			border-radius: 20px;
-		}
-		p {
-			text-align: justify;
-			margin-top: 10px;
-		}
-		h2 {
-			color: red;
-			margin-top: 10px;
-			font-size: 20px;
-		}
-		ul {
-			li {
-				list-style-type: none;
-				margin-top: 10px;
-				margin-left: 20px;
-			}
-		}
-		button {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			margin: 5px auto;
-			border-radius: 20px;
-			text-align: center;
-			padding: 10px 20px;
-			background-color: #c90505;
+		.modal-container {
 			color: white;
-			font-size: 15px;
-			font-family: "Share Tech Mono";
-			cursor: pointer;
-			transition: background-color 0.3s;
-			&:hover {
-				background-color: red;
+			img {
+				margin-top: 10px;
+				width: 100%;
+				border-radius: 20px;
+			}
+			p {
+				text-shadow: 2px 2px 0px rgba($color: #000000, $alpha: 0.8);
+				text-align: center;
+				margin-top: 10px;
+			}
+			h2 {
+				color: #ffe62d;
+				margin-top: 10px;
+				font-size: 20px;
+			}
+			ul {
+				li {
+					text-shadow: 2px 2px 0px rgba($color: #000000, $alpha: 0.8);
+					list-style-type: none;
+					margin-top: 10px;
+					margin-left: 20px;
+				}
+			}
+			button {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 15px auto;
+				border-radius: 5px;
+				border: none;
+				text-align: center;
+				padding: 5px 20px;
+				background-color: #3564ad;
+				color: white;
+				font-size: 15px;
+				font-family: "Share Tech Mono";
+				cursor: pointer;
+				transition: background-color 0.3s;
+				&:hover {
+					background-color: #2b4e86;
+				}
 			}
 		}
+
 		&.out {
 			display: none;
 		}
 	}
 	.pokedex {
+		border: 2px solid #333;
 		position: relative;
 		width: 250px;
 		height: 350px;
@@ -475,6 +490,8 @@ body {
     
     */
 		.pokedex-inside-right {
+			border-bottom: 2px solid #333;
+			border-left: 2px solid#333;
 			display: flex;
 			align-items: center;
 			flex-direction: column;
@@ -499,13 +516,16 @@ body {
 				// padding: 5px;
 				.box-left {
 					width: 50%;
-					height: 100%;
+					height: 69px;
+
+					border-bottom: 2px solid#333;
 				}
 				.box-right {
 					width: 50%;
 					height: 100%;
 					display: flex;
 					padding-top: 30px;
+
 					.left {
 						width: 50%;
 						height: 100%;
@@ -514,9 +534,21 @@ body {
 						border-bottom: 40px solid red;
 					}
 					.right {
+						position: relative;
 						width: 50%;
 						height: 40px;
 						background-color: red;
+						border-top: 2px solid #333;
+						&::before {
+							content: "";
+							position: absolute;
+							width: 75px;
+							height: 2px;
+							top: 17px;
+							left: -74px;
+							background-color: #333;
+							transform: skewY(-27deg);
+						}
 					}
 				}
 			}
@@ -558,13 +590,52 @@ body {
 					width: 90%;
 					height: 90%;
 					background-color: lightblue;
-					box-shadow: inset 0px 0px 3px rgba($color: #000000, $alpha: 1);
+					box-shadow: inset 1px 1px 5px rgba($color: #000000, $alpha: 1);
+					will-change: background-color;
+					animation-name: box-animation;
+					animation-duration: 600ms;
+					animation-timing-function: ease-in-out;
+					animation-iteration-count: infinite;
+					animation-direction: alternate;
+					animation-play-state: paused;
+					&.animacion-active {
+						animation-play-state: running;
+					}
 				}
 				.blue-box4 {
+					animation-delay: 10ms;
 					border-radius: 0px 4px 4px 0px;
 				}
+				.blue-box3 {
+					animation-delay: 250ms;
+				}
+				.blue-box2 {
+					animation-delay: 560ms;
+				}
 				.blue-box1 {
+					animation-delay: 900ms;
 					border-radius: 4px 0px 0px 4px;
+				}
+				@keyframes box-animation {
+					10% {
+						background-color: white;
+					}
+					30% {
+						background-color: greenyellow;
+					}
+					50% {
+						background-color: skyblue;
+					}
+
+					70% {
+						background-color: #60dd8e;
+					}
+					90% {
+						background-color: #ffe62d;
+					}
+					100% {
+						background-color: white;
+					}
 				}
 			}
 			.search {
@@ -602,8 +673,11 @@ body {
 						align-items: center;
 						justify-content: flex-end;
 						gap: 5px;
-						span {
-							box-shadow: 2px -4px 2px rgba($color: #000000, $alpha: 0.2);
+						transition: box-shadow 1s;
+						button {
+							cursor: pointer;
+							border: none;
+							box-shadow: 2px -4px 2px rgba($color: #000000, $alpha: 0.3);
 							width: 30px;
 							height: 20px;
 							background-color: #eee;
@@ -612,6 +686,10 @@ body {
 							align-items: center;
 							justify-content: center;
 							transform: rotate(180deg);
+							&:hover {
+								background-color: #fbfbfb;
+								box-shadow: 2px -2px 0px rgba($color: #000000, $alpha: 0.4);
+							}
 						}
 					}
 					.led {
@@ -675,6 +753,8 @@ body {
 						align-items: center;
 						justify-content: center;
 						button {
+							cursor: pointer;
+							border: none;
 							font-family: "Share Tech Mono";
 							display: flex;
 							align-items: center;
@@ -683,6 +763,11 @@ body {
 							border-radius: 5px;
 							font-size: 12px;
 							padding: 5px 12px;
+							box-shadow: 2px 4px 2px rgba($color: #000000, $alpha: 0.3);
+							&:hover {
+								background-color: #fbfbfb;
+								box-shadow: 2px 2px 0px rgba($color: #000000, $alpha: 0.4);
+							}
 						}
 					}
 				}

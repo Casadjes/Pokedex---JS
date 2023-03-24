@@ -6,6 +6,7 @@ const screenPokemon = document.getElementById("screen");
 const miniDisplay = document.getElementById("mini-display");
 const infoScreen = document.getElementById("info-screen");
 const buttonOn = document.getElementById("on");
+const boxAnimation = document.querySelectorAll(".box-animation");
 
 modalBtn.addEventListener("click", () => {
 	modal.classList.add("out");
@@ -17,4 +18,7 @@ buttonOn.addEventListener("click", () => {
 	screenPokemon.classList.toggle("active");
 	miniDisplay.classList.toggle("active");
 	infoScreen.classList.toggle("active");
+	boxAnimation.forEach((box) => {
+		box.classList.toggle("animacion-active");
+	});
 });
