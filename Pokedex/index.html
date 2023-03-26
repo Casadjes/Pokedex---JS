@@ -52,7 +52,9 @@
 						<span></span>
 						<span></span>
 					</div>
-					<div class="screen" id="screen"></div>
+					<div class="screen" id="screen">
+						<!-- main screen -->
+					</div>
 					<div class="bottom">
 						<div class="border"></div>
 						<div class="bottom-button">
@@ -97,7 +99,7 @@
 				</div>
 				<div class="info-display">
 					<div class="info-screen" id="info-screen">
-						<p>Charizard es un pokemon</p>
+						<!-- info -->
 					</div>
 					<span class="blue-box1 box-animation"></span>
 					<span class="blue-box2 box-animation"></span>
@@ -129,7 +131,25 @@
 				</div>
 			</div>
 		</div>
+		<audio id="principalSound" loop>
+			<source
+				src="sounds/pokemon_one-hundred-fifty-one.mp3"
+				type="audio/mpeg" />
+		</audio>
+		<audio id="TurnOnSound">
+			<source src="sounds/consola.mp3" />
+		</audio>
+
+		<template id="screenImgTemplate">
+			<img src="" alt="" />
+		</template>
+		<template id="infoScreenTemplate">
+			<p id="pokemonName"></p>
+			<p id="pokemonType"></p>
+			<p id="pokemonId"></p>
+		</template>
 		<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+		<script src="API.js"></script>
 		<script type="module" src="/main.js"></script>
 	</body>
 </html>

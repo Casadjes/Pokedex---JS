@@ -268,7 +268,11 @@ body {
 				.screen {
 					width: 85%;
 					height: 70%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					border-radius: 8px;
+					// transform: rotateY(180deg);
 					background-image: radial-gradient(
 						circle farthest-corner at 10% 20%,
 						rgba(14, 174, 87, 1) 0%,
@@ -281,6 +285,11 @@ body {
 							rgba(24, 138, 141, 1) 11.2%,
 							rgba(96, 221, 142, 1) 91.1%
 						);
+					}
+					img {
+						width: 100%;
+						height: 90%;
+						object-fit: contain;
 					}
 				}
 				.bottom {
@@ -581,6 +590,9 @@ body {
 							rgba(24, 138, 141, 1) 11.2%,
 							rgba(96, 221, 142, 1) 91.1%
 						);
+					}
+					p {
+						width: 100%;
 					}
 				}
 				.blue-box1,

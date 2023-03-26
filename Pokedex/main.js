@@ -7,13 +7,16 @@ const miniDisplay = document.getElementById("mini-display");
 const infoScreen = document.getElementById("info-screen");
 const buttonOn = document.getElementById("on");
 const boxAnimation = document.querySelectorAll(".box-animation");
+const TurnOnSound = document.getElementById("TurnOnSound");
 
 modalBtn.addEventListener("click", () => {
 	modal.classList.add("out");
 	welcome.classList.add("out");
 	pokedexOpen.classList.add("active");
+	document.getElementById("principalSound").play();
 });
 buttonOn.addEventListener("click", () => {
+	TurnOnSound.play();
 	buttonOn.classList.toggle("active");
 	screenPokemon.classList.toggle("active");
 	miniDisplay.classList.toggle("active");
