@@ -28,6 +28,26 @@
 		</div>
 		<div class="pokedex">
 			<div class="pokedex-top-left">
+				<div class="screenInfo-attack" id="attack-info">
+					<div class="screenInfo-attack-content">
+						<div class="profesor-Oak">
+							<img
+								src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/43cc8211-4ecb-4505-8cdd-15d4f43fb303/d5f15ce-31b2fc92-e9b6-49fb-a957-1a0d3874f87e.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQzY2M4MjExLTRlY2ItNDUwNS04Y2RkLTE1ZDRmNDNmYjMwM1wvZDVmMTVjZS0zMWIyZmM5Mi1lOWI2LTQ5ZmItYTk1Ny0xYTBkMzg3NGY4N2UuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.jD4VWFdnHbhORXimTEiuYmR9MtkiOQE9kJClUOeljQs"
+								alt="" />
+						</div>
+						<div class="text-content">
+							<span></span>
+							<button title="down">
+								<ion-icon name="arrow-dropdown"></ion-icon>
+							</button>
+							<div class="text-content-info" id="professorScreen">
+								Charizard es un pokemon naranja y nalgon, si te descuidas te
+								quema con su mirada en tu anito
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div class="box-left">
 					<div class="circle"></div>
 					<div class="three-circles">
@@ -109,6 +129,12 @@
 				<div class="info-display">
 					<div class="info-screen" id="info-screen">
 						<!-- info -->
+						<button class="scrollBtn-top scrollBtn" title="up" i>
+							<ion-icon name="arrow-dropup"></ion-icon>
+						</button>
+						<button class="scrollBtn-bottom scrollBtn" title="down">
+							<ion-icon name="arrow-dropdown"></ion-icon>
+						</button>
 						<section class="info-content" id="info-content"></section>
 					</div>
 					<span class="blue-box1 box-animation"></span>
@@ -157,9 +183,21 @@
 		<template id="infoScreenTemplate">
 			<p id="pokemonName"></p>
 			<p id="pokemonType"></p>
+			<p id="pokemonAttack"></p>
+			<p id="pokemonSpecialA"></p>
+			<p id="pokemonDefense"></p>
+			<p id="pokemonSpecialD"></p>
+			<p id="pokemonSpeed"></p>
+			<p id="pokemonHealth"></p>
+			<p id="pokemonExp"></p>
 			<p id="pokemonId"></p>
 			<p id="pokemonWeight"></p>
+			<p id="pokemonHeight"></p>
 		</template>
+		<template id="professorTemplate">
+			<p></p>
+		</template>
+
 		<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 		<script src="API.js"></script>
 		<script type="module" src="/main.js"></script>

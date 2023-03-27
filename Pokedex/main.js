@@ -12,6 +12,12 @@ const buttonOn = document.getElementById("on");
 const boxAnimation = document.querySelectorAll(".box-animation");
 const TurnOnSound = document.getElementById("TurnOnSound");
 
+const btnScroll = document.querySelectorAll(".scrollBtn");
+const btnScrollBottom = document.querySelector(".scrollBtn-bottom");
+const btnScrollTop = document.querySelector(".scrollBtn-top");
+
+const screenAttackInfo = document.getElementById("attack-info");
+
 modalBtn.addEventListener("click", () => {
 	modal.classList.add("out");
 	welcome.classList.add("out");
@@ -29,6 +35,17 @@ buttonOn.addEventListener("click", () => {
 	boxAnimation.forEach((box) => {
 		box.classList.toggle("animacion-active");
 	});
+	btnScroll.forEach((btn) => {
+		btn.classList.toggle("active");
+	});
+	screenAttackInfo.classList.toggle("active");
+});
+
+btnScrollBottom.addEventListener("click", () => {
+	infoContent.scrollTop += 10;
+});
+btnScrollTop.addEventListener("click", () => {
+	infoContent.scrollTop -= 10;
 });
 
 /* ------------------------------------------- */

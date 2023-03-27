@@ -8,10 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const fetchData = async () => {
 	try {
-		const res = await fetch("https://pokeapi.co/api/v2/pokemon/" + (id + 1));
-		const data = await res.json();
-		console.log(data);
-		mostrarPokemon(data);
+		// Pokemon
+		const resPokemon = await fetch(
+			"https://pokeapi.co/api/v2/pokemon/" + (id + 1)
+		);
+		const dataPokemon = await resPokemon.json();
+
+		// abilities
+		const resAbility = await fetch(
+			"https://pokeapi.co/api/v2/ability/" + (id + 1)
+		);
+		const dataAbility = await resAbility.json();
+
+		console.log(dataPokemon);
+		// console.log(dataAbility);
+
+		mostrarPokemon(dataPokemon);
+		mostrarInfo(dataAbility);
 		actualizarBotones();
 	} catch (error) {
 		console.log(error);
@@ -31,6 +44,7 @@ const mostrarPokemon = (data) => {
 	const infoTemplate = document.getElementById("infoScreenTemplate").content;
 	const cloneInfo = infoTemplate.cloneNode(true);
 	const infoFragment = document.createDocumentFragment();
+
 	cloneInfo.getElementById("pokemonName").innerText = `Name: ${data.name}`;
 	cloneInfo.getElementById(
 		"pokemonType"
@@ -38,7 +52,31 @@ const mostrarPokemon = (data) => {
 	cloneInfo.getElementById("pokemonId").innerText = `Id #${data.id}`;
 	cloneInfo.getElementById(
 		"pokemonWeight"
-	).innerText = `Weight: ${formatoKilogramos(data.weight)}`;
+	).innerText = `Weight: ${formatoKilogramos(data.weight)} kg`;
+	cloneInfo.getElementById(
+		"pokemonHeight"
+	).innerText = `Height: ${formatoKilogramos(data.height)} m`;
+	cloneInfo.getElementById(
+		"pokemonAttack"
+	).innerText = `Attack: ${data.stats[1].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonSpecialA"
+	).innerText = `Sp.Atk: ${data.stats[3].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonDefense"
+	).innerText = `Defense: ${data.stats[2].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonSpecialD"
+	).innerText = `Sp.Def: ${data.stats[4].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonSpeed"
+	).innerText = `Speed: ${data.stats[5].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonHealth"
+	).innerText = `Health: ${data.stats[0].base_stat}`;
+	cloneInfo.getElementById(
+		"pokemonExp"
+	).innerText = `Exp: ${data.base_experience}`;
 
 	screenImg.innerText = "";
 	screenFragment.appendChild(cloneImg);
@@ -49,14 +87,34 @@ const mostrarPokemon = (data) => {
 	infoScreen.appendChild(infoFragment);
 };
 
+const mostrarInfo = (data) => {
+	/* Professor Oak */
+	const professorScreen = document.getElementById("professorScreen");
+	const professorTemplate =
+		document.getElementById("professorTemplate").content;
+	const professorFragment = document.createDocumentFragment();
+	const cloneProfessor = professorTemplate.cloneNode(true);
+	cloneProfessor.querySelector("p").innerText = data.effect_entries[1].effect;
+
+	professorScreen.innerText = "";
+	professorFragment.appendChild(cloneProfessor);
+	professorScreen.appendChild(professorFragment);
+};
+
 const actualizarBotones = () => {
 	btnLeft.addEventListener("click", async () => {
 		document.getElementById("btnSound").play();
 		--id;
 		try {
-			const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-			const data = await res.json();
-			mostrarPokemon(data);
+			const resPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+			const dataPokemon = await resPokemon.json();
+
+			const resAbility = await fetch(`
+				https://pokeapi.co/api/v2/ability/${id}`);
+			const dataAbility = await resAbility.json();
+
+			mostrarPokemon(dataPokemon);
+			mostrarInfo(dataAbility);
 		} catch (error) {
 			console.log(error);
 		}
@@ -65,9 +123,16 @@ const actualizarBotones = () => {
 		document.getElementById("btnSound").play();
 		id++;
 		try {
-			const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-			const data = await res.json();
-			mostrarPokemon(data);
+			const resPokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+			const dataPokemon = await resPokemon.json();
+
+			// abilities
+			const resAbility = await fetch(`
+				https://pokeapi.co/api/v2/ability/${id}`);
+			const dataAbility = await resAbility.json();
+
+			mostrarPokemon(dataPokemon);
+			mostrarInfo(dataAbility);
 		} catch (error) {
 			console.log(error);
 		}
@@ -77,5 +142,5 @@ const actualizarBotones = () => {
 /* -------------------- API ------------------------ */
 
 function formatoKilogramos(kilogramos) {
-	return (kilogramos / 10).toFixed(1) + "Kg";
+	return (kilogramos / 10).toFixed(1);
 }
