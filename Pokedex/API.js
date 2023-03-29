@@ -101,6 +101,7 @@ const mostrarInfo = (data) => {
 	professorScreen.appendChild(professorFragment);
 };
 
+/* -------------------- API ------------------------ */
 const actualizarBotones = () => {
 	btnLeft.addEventListener("click", async () => {
 		document.getElementById("btnSound").play();
@@ -138,8 +139,6 @@ const actualizarBotones = () => {
 		}
 	});
 };
-
-/* -------------------- API ------------------------ */
 
 function formatoKilogramos(kilogramos) {
 	return (kilogramos / 10).toFixed(1);
