@@ -31,6 +31,20 @@ const fetchData = async () => {
 	}
 };
 
+const mostrarInfo = (data) => {
+	/* Professor Oak */
+	const professorScreen = document.getElementById("professorScreen");
+	const professorTemplate =
+		document.getElementById("professorTemplate").content;
+	const professorFragment = document.createDocumentFragment();
+	const cloneProfessor = professorTemplate.cloneNode(true);
+	cloneProfessor.querySelector("p").innerText = data.effect_entries[1].effect;
+
+	professorScreen.innerText = "";
+	professorFragment.appendChild(cloneProfessor);
+	professorScreen.appendChild(professorFragment);
+};
+
 const mostrarPokemon = (data) => {
 	/* main screen */
 	const screenImg = document.getElementById("screen-content");
@@ -52,10 +66,10 @@ const mostrarPokemon = (data) => {
 	cloneInfo.getElementById("pokemonId").innerText = `Id #${data.id}`;
 	cloneInfo.getElementById(
 		"pokemonWeight"
-	).innerText = `Weight: ${formatoKilogramos(data.weight)} kg`;
+	).innerText = `Weight: ${formatoCantidades(data.weight)} kg`;
 	cloneInfo.getElementById(
 		"pokemonHeight"
-	).innerText = `Height: ${formatoKilogramos(data.height)} m`;
+	).innerText = `Height: ${formatoCantidades(data.height)} m`;
 	cloneInfo.getElementById(
 		"pokemonAttack"
 	).innerText = `Attack: ${data.stats[1].base_stat}`;
@@ -85,23 +99,74 @@ const mostrarPokemon = (data) => {
 	infoScreen.innerText = "";
 	infoFragment.appendChild(cloneInfo);
 	infoScreen.appendChild(infoFragment);
+
+	/*
+	 * --------------------------Filter---------------------------------
+	 */
+
+	const pokemonFilter = async () => {
+		const url = await fetch(
+			"https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
+		);
+		const filterData = await url.json();
+		// console.log(filterData);
+
+		const btnSearch = document.getElementById("btn-search");
+		const searchInput = document.getElementById("search-pokemon");
+		const pokemonList = document.getElementById("pokemon-list");
+
+		btnSearch.addEventListener("click", async () => {
+			try {
+				const resPokemon = await fetch(
+					"https://pokeapi.co/api/v2/pokemon/" + searchInput.value.toLowerCase()
+				);
+				const dataPokemon = await resPokemon.json();
+
+				mostrarPokemon(dataPokemon);
+			} catch (error) {
+				console.log(error);
+			}
+		});
+
+		document.addEventListener("click", (e) => {
+			if (e.target === searchInput) {
+				pokemonList.classList.add("active");
+			} else {
+				pokemonList.classList.remove("active");
+			}
+		});
+
+		const showResults = (results) => {
+			pokemonList.innerHTML = "";
+			results.forEach((pokemon) => {
+				const li = document.createElement("li");
+				li.addEventListener("click", () => {
+					searchInput.value = `${li.textContent}`;
+				});
+				li.textContent = pokemon.name;
+				pokemonList.appendChild(li);
+			});
+		};
+
+		searchInput.addEventListener("keyup", () => {
+			const searchTerm = searchInput.value.toLowerCase();
+
+			const filteredResults = filterData.results.filter((pokemon) =>
+				pokemon.name.includes(searchTerm)
+			);
+
+			showResults(filteredResults);
+		});
+
+		showResults(filterData.results);
+	};
+
+	pokemonFilter();
 };
 
-const mostrarInfo = (data) => {
-	/* Professor Oak */
-	const professorScreen = document.getElementById("professorScreen");
-	const professorTemplate =
-		document.getElementById("professorTemplate").content;
-	const professorFragment = document.createDocumentFragment();
-	const cloneProfessor = professorTemplate.cloneNode(true);
-	cloneProfessor.querySelector("p").innerText = data.effect_entries[1].effect;
-
-	professorScreen.innerText = "";
-	professorFragment.appendChild(cloneProfessor);
-	professorScreen.appendChild(professorFragment);
-};
-
-/* -------------------- API ------------------------ */
+/*
+ *-------------------- btn ------------------------
+ */
 const actualizarBotones = () => {
 	btnLeft.addEventListener("click", async () => {
 		document.getElementById("btnSound").play();
@@ -140,6 +205,9 @@ const actualizarBotones = () => {
 	});
 };
 
-function formatoKilogramos(kilogramos) {
-	return (kilogramos / 10).toFixed(1);
+/*
+ *--------------------- format --------------------------
+ */
+function formatoCantidades(cantidad) {
+	return (cantidad / 10).toFixed(1);
 }

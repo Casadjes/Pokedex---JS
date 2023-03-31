@@ -374,13 +374,16 @@ body {
 						rgba(14, 174, 87, 1) 0%,
 						rgba(12, 116, 117, 1) 90%
 					);
+					background-position: right;
+					background-size: cover;
 					box-shadow: inset 0px 0px 10px rgba($color: #000000, $alpha: 2);
 					&.active {
-						background-image: linear-gradient(
-							0deg,
-							rgba(24, 138, 141, 1) 11.2%,
-							rgba(96, 221, 142, 1) 91.1%
-						);
+						// background-image: linear-gradient(
+						// 	0deg,
+						// 	rgba(24, 138, 141, 1) 11.2%,
+						// 	rgba(96, 221, 142, 1) 91.1%
+						// );
+						background-image: url(../img/back.jpg);
 					}
 					.screen-container {
 						width: 100%;
@@ -887,6 +890,7 @@ body {
 						// background-color: blueviolet;
 					}
 					.form-top {
+						position: relative;
 						display: flex;
 						justify-content: space-around;
 						align-items: center;
@@ -902,6 +906,48 @@ body {
 							color: white;
 							width: 60%;
 							height: 20px;
+						}
+						ul {
+							display: none;
+							border: 2px solid white;
+							position: absolute;
+							left: 66px;
+							top: 20px;
+							background-color: #eee;
+							padding: 5px 0 5px 5px;
+							width: 125px;
+							max-height: 120px;
+							overflow-y: scroll;
+							border-radius: 5px;
+							&::-webkit-scrollbar {
+								width: 5px;
+							}
+							&::-webkit-scrollbar-thumb {
+								border-radius: 5px;
+								background-color: #c90505;
+							}
+
+							li {
+								width: 100%;
+								height: 20px;
+								background-color: #fff;
+								border: 1px solid #999;
+								margin-top: 3px;
+
+								text-align: center;
+								cursor: pointer;
+								&:hover {
+									color: #000;
+
+									background-color: #f1efef;
+									border: 1px solid red;
+									box-shadow: inset 0px 0px 5px
+										rgba($color: #000000, $alpha: 0.5);
+								}
+							}
+							&.active {
+								display: block;
+							}
 						}
 					}
 					.form-bottom {
@@ -931,8 +977,5 @@ body {
 				}
 			}
 		}
-		// &:hover .pokedex-inside-right {
-		// 	transform: rotateY(180deg);
-		// }
 	}
 }
