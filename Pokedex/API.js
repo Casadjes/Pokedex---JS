@@ -4,6 +4,77 @@ let id = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
 	fetchData();
+
+	const btnSearch = document.getElementById("btn-search");
+	const searchInput = document.getElementById("search-pokemon");
+	const pokemonList = document.getElementById("pokemon-list");
+
+	const pokemonFilter = async () => {
+		const url = await fetch(
+			"https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
+		);
+		const filterData = await url.json();
+		searchInput.addEventListener("keyup", () => {
+			const searchTerm = searchInput.value.toLowerCase();
+
+			const filteredResults = filterData.results.filter((pokemon) =>
+				pokemon.name.includes(searchTerm)
+			);
+
+			showResults(filteredResults);
+		});
+	};
+	pokemonFilter();
+
+	btnSearch.addEventListener("click", async (e) => {
+		e.preventDefault();
+
+		try {
+			const resPokemon = await fetch(
+				"https://pokeapi.co/api/v2/pokemon/" + searchInput.value.toLowerCase()
+			);
+			const dataPokemon = await resPokemon.json();
+			const resAbility = await fetch(
+				"https://pokeapi.co/api/v2/ability/" + dataPokemon.id
+			);
+			const dataAbility = await resAbility.json();
+
+			mostrarPokemon(dataPokemon);
+			mostrarInfo(dataAbility);
+		} catch (error) {
+			console.log(error);
+		}
+	});
+
+	document.addEventListener("click", (e) => {
+		if (e.target === searchInput) {
+			pokemonList.classList.add("active");
+		} else {
+			pokemonList.classList.remove("active");
+		}
+	});
+
+	const showResults = (results) => {
+		pokemonList.innerHTML = "";
+		results.forEach((pokemon) => {
+			const li = document.createElement("li");
+			li.addEventListener("click", () => {
+				searchInput.value = `${li.textContent}`;
+			});
+			li.textContent = pokemon.name;
+			pokemonList.appendChild(li);
+		});
+	};
+
+	// searchInput.addEventListener("keyup", () => {
+	// 	const searchTerm = searchInput.value.toLowerCase();
+
+	// 	const filteredResults = filterData.results.filter((pokemon) =>
+	// 		pokemon.name.includes(searchTerm)
+	// 	);
+
+	// 	showResults(filteredResults);
+	// });
 });
 
 const fetchData = async () => {
@@ -21,7 +92,7 @@ const fetchData = async () => {
 		const dataAbility = await resAbility.json();
 
 		console.log(dataPokemon);
-		// console.log(dataAbility);
+		console.log(dataAbility);
 
 		mostrarPokemon(dataPokemon);
 		mostrarInfo(dataAbility);
@@ -30,6 +101,36 @@ const fetchData = async () => {
 		console.log(error);
 	}
 };
+
+// document.addEventListener("DOMContentLoaded", () => {
+// 	fetchData();
+
+// });
+
+// const fetchData = async () => {
+// 	try {
+// 		// Pokemon
+// 		const resPokemon = await fetch(
+// 			"https://pokeapi.co/api/v2/pokemon/" + (id + 1)
+// 		);
+// 		const dataPokemon = await resPokemon.json();
+
+// 		// abilities
+// 		const resAbility = await fetch(
+// 			"https://pokeapi.co/api/v2/ability/" + (id + 1)
+// 		);
+// 		const dataAbility = await resAbility.json();
+
+// 		console.log(dataPokemon);
+// 		console.log(dataAbility);
+
+// 		mostrarPokemon(dataPokemon);
+// 		mostrarInfo(dataAbility);
+// 		actualizarBotones();
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// };
 
 const mostrarInfo = (data) => {
 	/* Professor Oak */
@@ -104,64 +205,70 @@ const mostrarPokemon = (data) => {
 	 * --------------------------Filter---------------------------------
 	 */
 
-	const pokemonFilter = async () => {
-		const url = await fetch(
-			"https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
-		);
-		const filterData = await url.json();
-		// console.log(filterData);
+	// const pokemonFilter = async () => {
+	// 	const url = await fetch(
+	// 		"https://pokeapi.co/api/v2/pokemon?offset=0&limit=150"
+	// 	);
+	// 	const filterData = await url.json();
+	// 	// console.log(filterData);
 
-		const btnSearch = document.getElementById("btn-search");
-		const searchInput = document.getElementById("search-pokemon");
-		const pokemonList = document.getElementById("pokemon-list");
+	// 	const btnSearch = document.getElementById("btn-search");
+	// 	const searchInput = document.getElementById("search-pokemon");
+	// 	const pokemonList = document.getElementById("pokemon-list");
 
-		btnSearch.addEventListener("click", async () => {
-			try {
-				const resPokemon = await fetch(
-					"https://pokeapi.co/api/v2/pokemon/" + searchInput.value.toLowerCase()
-				);
-				const dataPokemon = await resPokemon.json();
+	// 	btnSearch.addEventListener("click", async (e) => {
+	// 		try {
+	// 			const resPokemon = await fetch(
+	// 				"https://pokeapi.co/api/v2/pokemon/" + searchInput.value.toLowerCase()
+	// 			);
+	// 			const dataPokemon = await resPokemon.json();
+	// 			const resAbility = await fetch(
+	// 				"https://pokeapi.co/api/v2/ability/" + data.id
+	// 			);
+	// 			const dataAbility = await resAbility.json();
+	// 			console.log(dataAbility);
 
-				mostrarPokemon(dataPokemon);
-			} catch (error) {
-				console.log(error);
-			}
-		});
+	// 			mostrarPokemon(dataPokemon);
+	// 			mostrarInfo(dataAbility);
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 		}
+	// 	});
 
-		document.addEventListener("click", (e) => {
-			if (e.target === searchInput) {
-				pokemonList.classList.add("active");
-			} else {
-				pokemonList.classList.remove("active");
-			}
-		});
+	// 	document.addEventListener("click", (e) => {
+	// 		if (e.target === searchInput) {
+	// 			pokemonList.classList.add("active");
+	// 		} else {
+	// 			pokemonList.classList.remove("active");
+	// 		}
+	// 	});
 
-		const showResults = (results) => {
-			pokemonList.innerHTML = "";
-			results.forEach((pokemon) => {
-				const li = document.createElement("li");
-				li.addEventListener("click", () => {
-					searchInput.value = `${li.textContent}`;
-				});
-				li.textContent = pokemon.name;
-				pokemonList.appendChild(li);
-			});
-		};
+	// 	const showResults = (results) => {
+	// 		pokemonList.innerHTML = "";
+	// 		results.forEach((pokemon) => {
+	// 			const li = document.createElement("li");
+	// 			li.addEventListener("click", () => {
+	// 				searchInput.value = `${li.textContent}`;
+	// 			});
+	// 			li.textContent = pokemon.name;
+	// 			pokemonList.appendChild(li);
+	// 		});
+	// 	};
 
-		searchInput.addEventListener("keyup", () => {
-			const searchTerm = searchInput.value.toLowerCase();
+	// 	searchInput.addEventListener("keyup", () => {
+	// 		const searchTerm = searchInput.value.toLowerCase();
 
-			const filteredResults = filterData.results.filter((pokemon) =>
-				pokemon.name.includes(searchTerm)
-			);
+	// 		const filteredResults = filterData.results.filter((pokemon) =>
+	// 			pokemon.name.includes(searchTerm)
+	// 		);
 
-			showResults(filteredResults);
-		});
+	// 		showResults(filteredResults);
+	// 	});
 
-		showResults(filterData.results);
-	};
+	// 	showResults(filterData.results);
+	// };
 
-	pokemonFilter();
+	// pokemonFilter();
 };
 
 /*
